@@ -1,6 +1,11 @@
 package org.mephi.processmanagement.model;
 
+import org.mephi.processmanagement.dao.RoleDao;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,13 +29,33 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "otchestvo")
+    private String otchestvo;
+
     @Transient
     private String confirmPassword;
+
+    @Transient
+    private List<String> roleNames;
+
+    public void setRoleNames(List<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public List<String> getRoleNames() {
+        return roleNames;
+    }
 
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public Long getId() {
         return id;
@@ -46,6 +71,30 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOtchestvo() {
+        return otchestvo;
+    }
+
+    public void setOtchestvo(String otchestvo) {
+        this.otchestvo = otchestvo;
     }
 
     public String getPassword() {
@@ -64,11 +113,11 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

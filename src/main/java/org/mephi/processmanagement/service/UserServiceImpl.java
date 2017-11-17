@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,9 +35,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleDao.getOne(1L));
-        user.setRoles(roles);
         userDao.save(user);
     }
 
@@ -43,4 +42,10 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
     }
+
+    @Override
+    public List<Role> getAllUserRoles(String userId) {
+        return null;
+    }
+
 }

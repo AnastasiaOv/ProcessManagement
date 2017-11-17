@@ -1,6 +1,8 @@
+<%@page pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="combo" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -25,35 +27,45 @@
 </head>
 
 <body>
-
 <div class="container">
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 class="form-signin-heading">Зарегистрировать нового пользователя</h2>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username"
-                            autofocus="true"></form:input>
+                <form:input type="text" path="username" class="form-control" placeholder="Логин"></form:input>
                 <form:errors path="username"></form:errors>
             </div>
         </spring:bind>
 
         <spring:bind path="password">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
+                <form:input type="password" path="password" class="form-control" placeholder="Пароль"></form:input>
                 <form:errors path="password"></form:errors>
             </div>
         </spring:bind>
 
-        <spring:bind path="confirmPassword">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="confirmPassword" class="form-control"
-                            placeholder="Confirm your password"></form:input>
-                <form:errors path="confirmPassword"></form:errors>
-            </div>
+        <spring:bind path="surname">
+            <form:input type="surname" path="surname" class="form-control"
+                        placeholder="Фамилия"></form:input>
         </spring:bind>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <spring:bind path="name">
+            <form:input type="name" path="name" class="form-control"
+                        placeholder="Имя"></form:input>
+        </spring:bind>
+
+        <spring:bind path="otchestvo">
+            <form:input type="otchestvo" path="otchestvo" class="form-control"
+                        placeholder="Отчество"></form:input>
+        </spring:bind>
+
+        <spring:bind path="roleNames">
+            <form:select path="roleNames" items="${roleNames}"></form:select>
+        </spring:bind>
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрировать</button>
     </form:form>
 
 </div>
