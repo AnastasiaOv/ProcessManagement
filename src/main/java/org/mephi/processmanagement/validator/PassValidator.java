@@ -1,26 +1,16 @@
 package org.mephi.processmanagement.validator;
 
 import org.mephi.processmanagement.model.User;
-import org.mephi.processmanagement.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
- * Validator for {@link org.mephi.processmanagement.model.User} class,
- * implements {@link Validator} interface.
- *
- * @author Eugene Suleimanov
- * @version 1.0
+ * Created by Анастасия on 18.11.2017.
  */
-
 @Component
-public class UserValidator implements Validator {
-
-    @Autowired
-    private UserService userService;
+public class PassValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -34,10 +24,6 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Required");
         if (user.getUsername().length() < 8 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
-        }
-
-        if (userService.findByUsername(user.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");

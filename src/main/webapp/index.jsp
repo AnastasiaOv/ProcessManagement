@@ -54,7 +54,7 @@
             <input name="password" type="password" class="form-control" placeholder="Пароль"/>
             <span>${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
         </div>
     </form>
 </div>

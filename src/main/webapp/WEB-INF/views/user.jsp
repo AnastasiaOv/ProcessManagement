@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -26,6 +27,8 @@
         <h2>User Page ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
         </h2>
     </c:if>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location.href = 'change'">Изменить пароль</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location.href = 'registration'">Зарегистрировать нового пользователя</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

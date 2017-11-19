@@ -11,6 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by Анастасия on 13.11.2017.
+ * Класс для реализации возможности переходов на страницы админа/пользователя
  */
 public class CustomSuccessAutentication implements AuthenticationSuccessHandler {
     @Override

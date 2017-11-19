@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void resetPassword(User user, String password) {
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        userDao.save(user);
+    }
+
+    @Override
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
     }
@@ -47,5 +53,6 @@ public class UserServiceImpl implements UserService {
     public List<Role> getAllUserRoles(String userId) {
         return null;
     }
+
 
 }
